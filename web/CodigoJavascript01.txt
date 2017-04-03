@@ -1,0 +1,1 @@
+alert("Has llamado a un codigo javascript usando AJAX.");

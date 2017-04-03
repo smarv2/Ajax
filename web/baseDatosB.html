@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var identificadorUnico = 0;
+            function nuevoDisco() {//Añadimos un disco a la tabla.
+
+                //1.Recogemos los valores de entrada.
+                var autor = document.getElementById("autor").value;
+                var titulo = document.getElementById("titulo").value;
+                var estilo = document.getElementById("estilo").value;
+                //2.Nos cercionamos de que tengan sentido.
+                if (autor == "" || titulo == "" || estilo == "") {
+                    return;
+                } else {
+                    //3.Limpiamos las entradas.
+                    document.getElementById("autor").value = "";
+                    document.getElementById("titulo").value = "";
+                    document.getElementById("estilo").value = "";
+                    //4.Creamos una nueva fila para la tabla, usando el DOM y le añadimos las celdas
+                    var fila = document.createElement("tr");
+                    fila.setAttribute("id", identificadorUnico); //Le damos un identificador único para poder reconocerla.
+                    var celda1 = document.createElement("td");
+                    celda1.appendChild(document.createTextNode(identificadorUnico));
+                    fila.appendChild(celda1);
+                    var celda2 = document.createElement("td");
+                    celda2.appendChild(document.createTextNode(autor));
+                    fila.appendChild(celda2);
+                    var celda3 = document.createElement("td");
+                    celda3.appendChild(document.createTextNode(titulo));
+                    fila.appendChild(celda3);
+                    var celda4 = document.createElement("td");
+                    celda4.appendChild(document.createTextNode(estilo));
+                    fila.appendChild(celda4);
+                    //5.Creamos un botón para asignárselo a la fila
+                    var botonborrar = document.createElement("input");
+                    botonborrar.setAttribute("type", "button");
+                    botonborrar.setAttribute("value", "Borrar Elemento");
+                    /*Hay al menos 3 maneras de hacer lo siguiente, yo lo voy a guardar
+                     como formato texto, así podemos guardar el código html después en
+                     formato texto y que la referencia al id se guarde, sino se perderá
+                     */
+                    botonborrar.setAttribute("onclick", "borrarDisco(" + identificadorUnico + ")");
+                    //6.Metemos el botón dentro de una celda y lo añadimos a la fila
+                    var celda5 = document.createElement("td");
+                    celda5.appendChild(botonborrar);
+                    fila.appendChild(celda5);
+                    //7.Aumentamos el valor del contador de los identificadores únicos.
+                    identificadorUnico++;
+                    //8.Actualizamos la tabla
+                    document.getElementById("tablaDiscos").appendChild(fila);
+                }
+            }
+            function borrarDisco(BorrarIdentificadorUnico) {//Borramos un disco de la tabla
+                var borrarFila = document.getElementById(BorrarIdentificadorUnico);
+                var tablaDiscos = document.getElementById("tablaDiscos");
+                tablaDiscos.removeChild(borrarFila);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Base de datos de Discos</h1>
+        <h2>Añadir datos:</h2>
+        <form action="#">
+            <table width="80%" border="0">
+                <tr>
+                    <td>Autor: <input type="text" id="autor"/></td>
+                    <td>Título: <input type="text" id="titulo"/></td>
+                    <td>Estilo: <input type="text" id="estilo"/></td>
+                    <td colspan="3" align="center">
+                        <input type="button" value="Añadir" onclick="nuevoDisco()" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <h2>Tabla de Discos:</h2>
+        <table border="1" width="80%">
+            <tbody id="tablaDiscos">
+                <tr>
+                    <th>Id</th>
+                    <th>Autor</th>
+                    <th>Título</th>
+                    <th>Estilo</th>
+                    <th>Operaciones</th>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

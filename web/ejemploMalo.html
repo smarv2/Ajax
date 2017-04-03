@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>P&aacute;gina de ejemplo</title>
+        <script language="JavaScript" src="lib/ConstructorXMLHttpRequest.js"></script>
+        <script language="JavaScript" type="text/javascript">
+            function estadoPeticion() {
+                window.alert("¿Que petición llego? (" + this.nombre + ")"); //Se supone que debería ser la del objeto al que se asignó.
+            }
+            function Coger(peticionAjax, url) {//Le pusimos un campo mas, para usarla con cualquier petición.
+                if (peticionAjax) { //Hacemos la petición Ajax estándar
+                    peticionAjax.open('GET', url, true);
+                    peticionAjax.onreadystatechange = estadoPeticion;
+                    peticionAjax.send(null);
+                }
+            }
+            var Peticion01 = ConstructorXMLHttpRequest(); //Usamos el constructor para obtener un objeto compatible.
+            Peticion01.nombre = "Peticion01"; //Un campo nombre, para saber quien es.
+            window.alert("Comprobando objeto 01 (nombre) = (" + Peticion01.nombre + ")"); //Vemos que se le asigna el nombre 
+            var Peticion02 = ConstructorXMLHttpRequest(); //Usamos el constructor para obtener un objeto compatible.
+            Peticion02.nombre = "Peticion02"; //Un campo nombre, para saber quien es.
+            window.alert("Comprobando objeto 02 (nombre) = (" + Peticion02.nombre + ")"); //Vemos que se le asigna el nombre
+        </script>
+    </head>
+    <body>
+        <!--Cuando ocurra el evento oneclick se llamara la función coger-->
+        <button onclick="Coger(Peticion01, 'datos/espera.jsp')">Coge el documento 01</button>
+        <button onclick="Coger(Peticion02, 'datos/videoclub.xml')">Coge el documento 02</button>
+    </body>
+</html>

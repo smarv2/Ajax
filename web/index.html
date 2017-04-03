@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>P&aacute;gina de ejemplo</title>
+        <script language="javascript" src="lib/ConstructorXMLHttpRequest.js"></script>
+        <script language="JavaScript" type="text/javascript">
+            var peticion01 = null; //Creamos la variable
+
+            //Este ejemplo emplea un constructor, debería funcionar en cualquier navegador.
+            peticion01 = new ConstructorXMLHttpRequest();
+
+            //Se llama cuando cambia peticion01.readyState.
+            function estadoPeticion() {
+                switch (peticion01.readyState) { //Según el estado de la petición devolvemos un Texto.
+                    case 0:
+                        document.getElementById('estado').innerHTML = "Sin iniciar";
+                        break;
+                    case 1:
+                        document.getElementById('estado').innerHTML = "Cargando";
+                        break;
+                    case 2:
+                        document.getElementById('estado').innerHTML = "Cargado";
+                        break;
+                    case 3:
+                        document.getElementById('estado').innerHTML = "Interactivo";
+                        break;
+                    case 4:
+                        document.getElementById('estado').innerHTML = "Completado";
+                        //Si ya hemos completado la petición, devolvemos además la información.
+                        document.getElementById('resultado').innerHTML = peticion01.responseText;
+                        break;
+                }
+            }
+
+            function fnTomar(url) {//Función fnTomar, en esta caso le entra una dirección relativa al documento actual.
+                if (peticion01) { //Si tenemos el objeto peticion01
+                    peticion01.open('GET', url, true); //Abrimos la url, false = forma síncrona
+                    
+                    /*Asignamos la función que se llama cada vez que cambia el estado de peticion01.readyState Y LO HACEMOS ANTES THE HACER EL SEND porque inicia la transmisión.*/
+                    peticion01.onreadystatechange = estadoPeticion;
+                    
+                    peticion01.send(null); //No le enviamos datos al servidor.
+                    //Escribimos la respuesta en el campo con
+                    ID = resultado
+
+                    document.getElementById('resultado').innerHTML = peticion01.responseText;
+
+
+
+
+
+
+
+
+
+                    //Código devuelto por el servidor, del tipo 404 (documento no encontrado) o 200 (OK).
+                    //document.getElementById('estado').innerHTML = peticion01.status;
+                    //Mensaje de texto enviado por el servidor junto al código (status), para el caso de código 200 contendrá “OK”.
+                    //document.getElementById('txtestado').innerHTML = peticion01.statusText;
+                    //Los datos devueltos por el servidor en forma de cadena.
+                    //document.getElementById('txtresultado').innerHTML = peticion01.responseText;
+                    //Datos devueltos por el servidor en forma de documento XML que puede ser recorrido mediante las funciones del DOM (getEementsByTagName, etc.).
+                    //document.getElementById('xmlresultado').innerHTML = peticion01.responseXML;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!--Cuando ocurra el evento oneclick se llamará la función fnTomar-->
+        <!--button onclick="fnTomar('datos/videoclub.xml')">Coge un documento</button -->
+        <button onclick="fnTomar('espera.jsp')">Coge un documento</button>
+        <table border="4">
+            <tr>
+                <td><span id="estado">Estado petici&oacute;n</span></td> <!-- Campo para indicar el estado de la petición-->
+                <!--El campo con id=resultado se sustituirá por causa de que ese id está en la función coger-->
+                <td><span id="resultado">Sin resultado</span></td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+//Hemos llamado a una peticionAjax
+var PeticionAjax02 = new objetoAjax(); //Definimos un nuevo objetoAjax.
+PeticionAjax02.completado = objetoRequestCompletado02; //Función completado del objetoAjax redefinida.
+function objetoRequestCompletado02(estado, estadoTexto, respuestaTexto, respuestaXML) {
+document.getElementById('Lugar01').innerHTML = respuestaTexto;
+//Insertamos en el lugar01
+}
+PeticionAjax02.coger('pag01.html') //Cogemos el código HTML con la PeticionAjax02

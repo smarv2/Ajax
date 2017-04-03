@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Página de ejemplo</title>
+        <script language="JavaScript" src="lib/ConstructorXMLHttpRequest.js"></script>
+        <script language="JavaScript" src="lib/ClasePeticionAjax.js"></script>
+        <script language="JavaScript" type="text/javascript">
+            var PeticionAjax01 = new objetoAjax(); //Definimos un nuevo objetoAjax.
+            PeticionAjax01.completado = objetoRequestCompletado01; //Función completado del objetoAjax redefinida.
+            function objetoRequestCompletado01(estado, estadoTexto, respuestaTexto, respuestaXML) {
+                /* En el ejemplo vamos a utilizar todos los parámetros para ver como
+                 queda, en un futuro próximo, solo te interesare la respuesta en
+                 texto o XML */
+                document.getElementById('estado01').innerHTML = estado;
+                document.getElementById('estadoTexto01').innerHTML = estadoTexto;
+                document.getElementById('respuestaTexto01').innerHTML = respuestaTexto;
+                document.getElementById('respuestaXML01').innerHTML = respuestaXML;
+            }
+            var PeticionAjax02 = new objetoAjax(); //Definimos un nuevo objetoAjax.
+            PeticionAjax02.completado = objetoRequestCompletado02; //Función completado del objetoAjax redefinida.
+            function objetoRequestCompletado02(estado, estadoTexto, respuestaTexto, respuestaXML) {
+                /* En el ejemplo vamos a utilizar todos los parámetros para ver como
+                 queda,
+                 en un futuro próximo, solo te interesare la respuesta en texto o XML
+                 */
+                document.getElementById('estado02').innerHTML = estado;
+                document.getElementById('estadoTexto02').innerHTML = estadoTexto;
+                document.getElementById('respuestaTexto02').innerHTML = respuestaTexto;
+                document.getElementById('respuestaXML02').innerHTML = respuestaXML;
+            }
+            var PeticionAjax03 = new objetoAjax(); //Definimos un nuevo objetoAjax.
+            PeticionAjax03.completado = objetoRequestCompletado03; //Función completado del objetoAjax redefinida.
+            function objetoRequestCompletado03(estado, estadoTexto, respuestaTexto, respuestaXML) {
+                /* En el ejemplo vamos a utilizar todos los parámetros para ver como
+                 queda,
+                 en un futuro próximo, solo te interesare la respuesta en texto o XML
+                 */
+                document.getElementById('estado03').innerHTML = estado;
+                document.getElementById('estadoTexto03').innerHTML = estadoTexto;
+                document.getElementById('respuestaTexto03').innerHTML = respuestaTexto;
+                document.getElementById('respuestaXML03').innerHTML = respuestaXML;
+            }
+        </script>
+    </head>
+    <body>
+        <!--Cuando ocurra el evento oneclick se llamará a la función coger DE CADA OBJETO! -->
+        <button onclick="PeticionAjax01.coger('espera.jsp')">Coge el documento 01</button>
+        <button onclick="PeticionAjax02.coger('datos/videoclub.xml')">Coge el documento 02</button>
+        <button onclick="PeticionAjax03.coger('http://www.google.com')">Coge el documento 03</button>
+        <table border="4">
+            <tr>
+                <td>Documento 01</td>
+                <!--Todos los campos del documento 01 les hemos
+                asignado un id como de costumbre para recibir la información -->
+                <td><span id="estado01">estado no recibido</span></td>
+                <td><span id="estadoTexto01">texto estado no recibido</span></td>
+                <td><span id="respuestaTexto01">texto respuesta no recibido</span></td>
+                <td><span id="respuestaXML01">xml respuesta no recibido</span></td>
+            </tr>
+            <tr>
+                <td>Documento 02</td>
+                <!--Todos los campos del documento 02 les hemos asignado un id
+                como de costumbre para recibir la información -->
+                <td><span id="estado02">estado no recibido</span></td>
+                <td><span id="estadoTexto02">texto estado no recibido</span></td>
+                <td><span id="respuestaTexto02">texto respuesta no recibido</span></td>
+                <td><span id="respuestaXML02">xml respuesta no recibido</span></td>
+            </tr>
+            <tr>
+                <td>Documento 03</td>
+                <!--Todos los campos del documento 02 les hemos asignado un id
+                como de costumbre para recibir la información -->
+                <td><span id="estado03">estado no recibido</span></td>
+                <td><span id="estadoTexto03">texto estado no recibido</span></td>
+                <td><span id="respuestaTexto03">texto respuesta no recibido</span></td>
+                <td><span id="respuestaXML03">xml respuesta no recibido</span></td>
+            </tr>
+
+        </table>
+    </body>
+</html>
