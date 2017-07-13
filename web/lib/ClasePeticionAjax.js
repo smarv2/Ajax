@@ -51,7 +51,7 @@ function objetoRequestCompletado(estado, estadoTexto, respuestaTexto, respuestaX
  al ObjetoAJAX, con prototype, de esta manera todos los objetoAjax
  que se creen, lo harán conteniendo estas funciones en ellos*/
 //Definimos la función de recoger información.
-objetoAjax.prototype.coger = peticionAsincrona;
+objetoAjax.prototype.tomar = peticionAsincrona;
 //Definimos una serie de funciones que sería posible utilizar y las dejamos en blanco en esta clase.
 objetoAjax.prototype.cargando = objetoRequestCargando;
 objetoAjax.prototype.cargado = objetoRequestCargado;
